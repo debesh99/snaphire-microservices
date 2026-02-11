@@ -12,14 +12,14 @@ spring:
           lower-case-service-id: true
       routes:
         # Route 1: Auth Service (Login & User Management)
-        - id: auth-service
-          uri: lb://AUTH-SERVICE
+        - id: user-service
+          uri: lb://USER-MS
           predicates:
             - Path=/auth/**, /users/** # <--- CHANGED: Added /users/** here
 
         # Route 2: Job Service (Jobs)
         - id: job-service
-          uri: lb://JOB-SERVICE
+          uri:  lb://USER-MS
           predicates:
             - Path=/jobs/**
 

@@ -1,7 +1,6 @@
-package com.debesh.snaphire.job_ms.exception;
+package com.debesh.snaphire.user_ms.exception;
 
-
-import com.debesh.snaphire.job_ms.model.ErrorOutputModel;
+import com.debesh.snaphire.user_ms.model.ErrorOutputModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -10,6 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
     // Handling global exception
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorOutputModel> handleGlobalException(Exception e) {
@@ -17,9 +17,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    // Handling Job Not Found Exception
-    @ExceptionHandler(JobNotFoundException.class)
-    public ResponseEntity<ErrorOutputModel> handleJobNotFoundException(Exception e) {
+    //handling Review Not found Exception
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorOutputModel> handleUserNotFoundException(Exception e) {
         ErrorOutputModel error = new ErrorOutputModel(HttpStatus.NOT_FOUND.value(), e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }

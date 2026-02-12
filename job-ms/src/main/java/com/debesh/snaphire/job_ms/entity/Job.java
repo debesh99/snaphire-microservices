@@ -73,4 +73,16 @@ public class Job {
     public void setExperienceRequired(int experienceRequired) {
         this.experienceRequired = experienceRequired;
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", company='" + company + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", location='" + location + '\'' +
+                ", experienceRequired=" + experienceRequired +
+                '}';
+    }
 }

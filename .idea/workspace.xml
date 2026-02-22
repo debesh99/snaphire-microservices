@@ -4,16 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc026c5d-2725-499c-bcab-ab67180f901b" name="Changes" comment="Added api-gateway microservice">
+    <list default="true" id="bc026c5d-2725-499c-bcab-ab67180f901b" name="Changes" comment="Added swagger api in every service">
+      <change afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/model/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/service/JwtService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/service/impl/JwtServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/application-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-registry/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/service-registry/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/debesh/snaphire/user_ms/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -163,10 +175,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ApplicationMsApplication" />
         <item itemvalue="Application.ApiGatewayApplication" />
-        <item itemvalue="Application.ServiceRegistryApplication" />
+        <item itemvalue="Application.ApplicationMsApplication" />
         <item itemvalue="Application.UserMsApplication" />
+        <item itemvalue="Application.ServiceRegistryApplication" />
         <item itemvalue="Application.JobMsApplication" />
       </list>
     </recent_temporary>
@@ -187,11 +199,20 @@
       <option name="project" value="LOCAL" />
       <updated>1770639309442</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added swagger api in every service">
+      <option name="closed" value="true" />
+      <created>1771751983429</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1771751983429</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added api-gateway microservice" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added api-gateway microservice" />
+    <MESSAGE value="Added swagger api in every service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added swagger api in every service" />
   </component>
 </project>

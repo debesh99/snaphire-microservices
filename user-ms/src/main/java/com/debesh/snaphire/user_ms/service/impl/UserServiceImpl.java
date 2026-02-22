@@ -3,6 +3,7 @@ package com.debesh.snaphire.user_ms.service.impl;
 import com.debesh.snaphire.user_ms.entity.User;
 import com.debesh.snaphire.user_ms.exception.UserNotFoundException;
 import com.debesh.snaphire.user_ms.repository.UserRepository;
+import com.debesh.snaphire.user_ms.service.JwtService;
 import com.debesh.snaphire.user_ms.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtService jwtService; // It injects the interface!
 
     @Override
     public void createUser(User user) {
@@ -61,5 +65,20 @@ public class UserServiceImpl implements UserService {
         }
         userRepository.deleteById(id);
         LOGGER.info("User with ID {} deleted successfully", id);
+    }
+
+    public String login(String email, String rawPassword) {
+        // 1. Find user by email
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
+
+        // 2. Check password
+        // passwordEncoder.matches(raw string, encrypted string from DB)
+        if (!passwordEncoder.matches(rawPassword, user.getPassword())) {
+            throw new UserNotFoundException("Invalid credentials");
+        }
+
+        // 3. Generate and return JWT
+        return jwtService.generateToken(email);
     }
 }

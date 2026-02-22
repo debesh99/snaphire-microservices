@@ -11,23 +11,27 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        # Route 1: Auth Service (Login & User Management)
+        # User Service (Login/Signup - NO FILTER NEEDED)
         - id: user-service
           uri: lb://USER-MS
           predicates:
-            - Path=/auth/**, /users/** # <--- CHANGED: Added /users/** here
+            - Path=/users/**
 
-        # Route 2: Job Service (Jobs)
+        # Job Service (NEEDS PROTECTION)
         - id: job-service
-          uri:  lb://USER-MS
+          uri: lb://JOB-SERVICE
           predicates:
             - Path=/jobs/**
+          filters:
+            - AuthenticationFilter # <--- ADD THIS
 
-        # Route 3: Application Service (Apply)
+        # Application Service (NEEDS PROTECTION)
         - id: application-service
           uri: lb://APPLICATION-SERVICE
           predicates:
             - Path=/applications/**
+          filters:
+            - AuthenticationFilter # <--- ADD THIS
 
 eureka:
   client:

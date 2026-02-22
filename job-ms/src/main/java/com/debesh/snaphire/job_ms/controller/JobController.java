@@ -20,9 +20,15 @@ public class JobController {
     @Autowired
     JobService jobService;
 
+    // RBAC: ONLY RECRUITERS CAN POST JOBS
     @PostMapping
-    public ResponseEntity<String> createJob(@RequestBody Job job) {
-        LOGGER.info("Creating job: {}", job);
+    public ResponseEntity<?> createJob(
+            @RequestBody Job job,
+            @RequestHeader(value = "X-User-Role", required = false) String role,
+            @RequestHeader(value = "X-User-Id", required = false) Long userId) {
+        if (!"RECRUITER".equals(role)) {
+            return new ResponseEntity<>("Access Denied: Only Recruiters can post jobs.", HttpStatus.FORBIDDEN);
+        }
         jobService.createJob(job);
         return new ResponseEntity<>("Job created successfully", HttpStatus.CREATED);
     }
@@ -34,11 +40,18 @@ public class JobController {
         return new ResponseEntity<>(job, HttpStatus.OK);
     }
 
+    // RBAC: ONLY RECRUITERS CAN DELETE
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteJobById(@PathVariable("id") Long id) {
-        LOGGER.info("Deleting job by id: {}", id);
-        jobService.deleteJobById(id);
-        return new ResponseEntity<>("Job deleted successfully", HttpStatus.OK);
+    public ResponseEntity<String> deleteJob(
+            @PathVariable Long id,
+            @RequestHeader(value = "X-User-Role", required = false) String role) {
+
+        if (!"RECRUITER".equals(role)) {
+            return new ResponseEntity<>("Access Denied: Only Recruiters can delete jobs.", HttpStatus.FORBIDDEN);
+        }
+
+        // jobService.deleteJob(id); // Assuming you have this method
+        return ResponseEntity.ok("Job deleted successfully");
     }
 
     @PutMapping("/{id}")

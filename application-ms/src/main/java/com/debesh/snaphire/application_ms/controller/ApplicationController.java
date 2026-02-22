@@ -18,8 +18,16 @@ public class ApplicationController {
     private ApplicationService applicationService;
 
     // POST: /applications/apply?userId=1&jobId=5
+    // RBAC: ONLY CANDIDATES CAN APPLY
     @PostMapping("/apply")
-    public ResponseEntity<String> applyForJob(@RequestParam("userId") Long userId, @RequestParam("jobId") Long jobId) {
+    public ResponseEntity<String> applyForJob(
+            @RequestParam("jobId") Long jobId,
+            @RequestHeader(value = "X-User-Role", required = false) String role,
+            @RequestHeader(value = "X-User-Id", required = false) Long userId) {
+
+        if (!"CANDIDATE".equals(role)) {
+            return new ResponseEntity<>("Access Denied: Only Candidates can apply for jobs.", HttpStatus.FORBIDDEN);
+        }
         applicationService.applyForJob(userId, jobId);
         return new ResponseEntity<>("Application created successfully", HttpStatus.CREATED);
     }
@@ -42,8 +50,17 @@ public class ApplicationController {
         return ResponseEntity.ok("Application withdrawn/deleted successfully");
     }
 
+    // RBAC: ONLY RECRUITERS CAN UPDATE STATUS (e.g., Accept/Reject)
     @PutMapping("/{id}/status")
-    public ResponseEntity<String> updateStatus(@PathVariable("id") Long id, @RequestParam("status") String status) {
+    public ResponseEntity<String> updateStatus(
+            @PathVariable("id") Long id,
+            @RequestParam("status") String status,
+            @RequestHeader(value = "X-User-Role", required = false) String role) {
+
+        if (!"RECRUITER".equals(role)) {
+            return new ResponseEntity<>("Access Denied: Only Recruiters can update application status.", HttpStatus.FORBIDDEN);
+        }
+
         applicationService.updateApplicationStatus(id, status);
         return ResponseEntity.ok("Status updated to " + status);
     }

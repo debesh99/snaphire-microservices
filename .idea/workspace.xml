@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc026c5d-2725-499c-bcab-ab67180f901b" name="Changes" comment="Added login syste, using JWT">
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/debesh/snaphire/api_gateway/filter/AuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/debesh/snaphire/api_gateway/util/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bc026c5d-2725-499c-bcab-ab67180f901b" name="Changes" comment="Added JWT Filter in api-gateway for RBAC" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -211,13 +206,22 @@
       <option name="project" value="LOCAL" />
       <updated>1771753833587</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added JWT Filter in api-gateway for RBAC">
+      <option name="closed" value="true" />
+      <created>1771754696270</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1771754696270</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added api-gateway microservice" />
     <MESSAGE value="Added swagger api in every service" />
     <MESSAGE value="Added login syste, using JWT" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added login syste, using JWT" />
+    <MESSAGE value="Added JWT Filter in api-gateway for RBAC" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JWT Filter in api-gateway for RBAC" />
   </component>
 </project>
